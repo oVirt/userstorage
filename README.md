@@ -70,7 +70,7 @@ backed up by sparse files and do not consume much resources.
 
 ## Consuming the storage in your tests
 
-See test/userstorage_test.py for example test module consuming storage
+See test/consume_test.py for example test module consuming storage
 set up by userstorage tool, and the exampleconf.py module.
 
 Note that some storage may not be available on some systems. Your tests
