@@ -16,7 +16,7 @@ import pytest
 
 import userstorage
 
-BACKENDS = userstorage.load_config("exampleconf.py").BACKENDS
+BACKENDS = userstorage.load_config("example_config.py").BACKENDS
 
 
 @pytest.fixture(

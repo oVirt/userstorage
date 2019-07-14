@@ -47,22 +47,22 @@ The configuration module must define these names:
     # Storage configurations needed by the tests.
     BACKENDS = {}
 
-See exampleconf.py for example configuration used by the tests for this
+See example_config.py for example configuration used by the tests for this
 project.
 
 
 ## Creating storage
 
-To create the storage described in exampleconf.py, run:
+To create the storage described in example_config.py, run:
 
-    python -m userstorage create exampleconf.py
+    python -m userstorage create example_config.py
 
 This can be run once when creating a development environment, and must
 be run again after rebooting the host.
 
 If you want to delete the storage, run:
 
-    python -m userstorage delete exampleconf.py
+    python -m userstorage delete example_config.py
 
 There is no need to delete the storage normally. The loop devices are
 backed up by sparse files and do not consume much resources.
@@ -71,7 +71,7 @@ backed up by sparse files and do not consume much resources.
 ## Consuming the storage in your tests
 
 See test/consume_test.py for example test module consuming storage
-set up by userstorage tool, and the exampleconf.py module.
+set up by userstorage tool, and the example_config.py module.
 
 Note that some storage may not be available on some systems. Your tests
 can check if a storage is available and skip or mark the test as xfail
