@@ -5,13 +5,10 @@ from __future__ import absolute_import
 from __future__ import division
 
 import errno
-import glob
 import io
 import mmap
 import os
-import shutil
 import stat
-import subprocess
 
 from contextlib import closing
 
@@ -31,12 +28,9 @@ BACKENDS = userstorage.load_config("exampleconf.py").BACKENDS
 )
 def user_loop(request):
     backend = validate_backend(request.param)
+    backend.setup()
     yield backend
-
-    # Discard loop device to ensure next test is not affected.
-    # TODO: Should be implemented by backend.
-
-    subprocess.check_output(["blkdiscard", backend.path])
+    backend.teardown()
 
 
 @pytest.fixture(
@@ -48,17 +42,9 @@ def user_loop(request):
 )
 def user_mount(request):
     backend = validate_backend(request.param)
+    backend.setup()
     yield backend
-
-    # Remove files and directories created by the current tests to ensure that
-    # the next test is not affected.
-    # TODO: Should be implemented by backend.
-
-    for path in glob.glob(os.path.join(backend.path, "*")):
-        if os.path.isdir(path):
-            shutil.rmtree(path)
-        else:
-            os.remove(path)
+    backend.teardown()
 
 
 @pytest.fixture(
@@ -70,13 +56,9 @@ def user_mount(request):
 )
 def user_file(request):
     backend = validate_backend(request.param)
+    backend.setup()
     yield backend
-
-    # Truncate file to ensure that next test is not affected.
-    # TODO: Should be implemented by backend.
-
-    with open(backend.path, "w") as f:
-        f.truncate(0)
+    backend.teardown()
 
 
 def validate_backend(backend):

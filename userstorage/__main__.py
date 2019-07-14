@@ -17,7 +17,7 @@ log = logging.getLogger("userstorage")
 def main():
     parser = argparse.ArgumentParser(
         description='Set up storage tests')
-    parser.add_argument("command", choices=["setup", "teardown"])
+    parser.add_argument("command", choices=["create", "delete"])
     parser.add_argument("config_file", help="Configuration file")
     args = parser.parse_args()
 
@@ -27,27 +27,27 @@ def main():
 
     cfg = config.load_config(args.config_file)
 
-    if args.command == "setup":
-        setup(cfg)
-    elif args.command == "teardown":
-        teardown(cfg)
+    if args.command == "create":
+        create(cfg)
+    elif args.command == "delete":
+        delete(cfg)
 
 
-def setup(cfg):
+def create(cfg):
     osutil.create_dir(cfg.BASE_DIR)
 
     for b in cfg.BACKENDS.values():
         try:
-            b.setup()
+            b.create()
         except backend.Error as e:
             if b.required:
                 raise
             log.warning("Skipping %s storage: %s", b.name, e)
 
 
-def teardown(cfg):
+def delete(cfg):
     for b in cfg.BACKENDS.values():
-        b.teardown()
+        b.delete()
 
     osutil.remove_dir(cfg.BASE_DIR)
 

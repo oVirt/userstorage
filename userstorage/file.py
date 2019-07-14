@@ -39,20 +39,23 @@ class File(backend.Base):
     def required(self):
         return self._mount.required
 
-    def setup(self):
+    def create(self):
         if self.exists():
             log.debug("Reusing file %s", self.path)
             return
 
-        self._mount.setup()
+        self._mount.create()
 
         log.info("Creating file %s", self.path)
         open(self.path, "w").close()
 
-    def teardown(self):
+    def delete(self):
         log.info("Removing file %s", self.path)
         osutil.remove_file(self.path)
-        self._mount.teardown()
+        self._mount.delete()
 
     def exists(self):
         return os.path.exists(self.path)
+
+    def setup(self):
+        open(self.path, "w").close()

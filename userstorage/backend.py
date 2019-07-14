@@ -13,13 +13,14 @@ class Error(Exception):
 
 class Unsupported(Error):
     """
-    May be raised in setup() if backend is not supported on the current system.
+    May be raised in create() if backend is not supported on the current
+    system.
     """
 
 
-class SetupFailed(Error):
+class CreateFailed(Error):
     """
-    May be raised in setup() if backend should be supported but setup has
+    May be raised in create() if backend is supported but creating backend has
     failed.
     """
 
@@ -44,23 +45,52 @@ class Base(object):
     # the missing storage.
     required = True
 
-    def setup(self):
+    # Provisioning storage.
+
+    def create(self):
         """
-        Set up backend for testing.
+        Create storage backend.
         """
         raise NotImplementedError
 
-    def teardown(self):
+    def delete(self):
         """
-        Clean up backend when it not needed any more.
+        Delete storage backend.
         """
         raise NotImplementedError
 
     def exists(self):
         """
-        Return True if backend is set up and can be used.
+        Return True if backend was created and can be used in a test.
         """
         raise NotImplementedError
+
+    # Ensuring test isolation.
+
+    def setup(self):
+        """
+        Should be called before each test to ensure old data from previous
+        tests does not break this test.
+
+        Should be called in your pytest fixture before yielding the backed to
+        the tests. If you use unittest based tests, should be called in
+        setUp().
+
+        Subclass should implemnet if needed.
+        """
+
+    def teardown(self):
+        """
+        Should be called after each test if cleanup is needed.
+
+        Should be called in your pytest fixture after yielding the the backed
+        to the tests. If you use unittest based tests, should be called in
+        tearDown().
+
+        Subclass should implemnet if needed.
+        """
+
+    # Displaying.
 
     def __str__(self):
         return self.name

@@ -4,9 +4,11 @@
 from __future__ import absolute_import
 from __future__ import division
 
-import os
-import subprocess
+import glob
 import logging
+import os
+import shutil
+import subprocess
 
 from . import backend
 from . import osutil
@@ -37,12 +39,12 @@ class Mount(backend.Base):
     def required(self):
         return self._loop.required
 
-    def setup(self):
+    def create(self):
         if self.exists():
             log.debug("Reusing mount %s", self.path)
             return
 
-        self._loop.setup()
+        self._loop.create()
 
         log.info("Creating filesystem %s", self.path)
         self._create_filesystem()
@@ -52,7 +54,7 @@ class Mount(backend.Base):
         if os.geteuid() != 0:
             osutil.chown(self.path)
 
-    def teardown(self):
+    def delete(self):
         log.info("Unmounting filesystem %s", self.path)
 
         if self.exists():
@@ -60,7 +62,7 @@ class Mount(backend.Base):
 
         osutil.remove_dir(self.path)
 
-        self._loop.teardown()
+        self._loop.delete()
 
     def exists(self):
         with open("/proc/self/mounts") as f:
@@ -68,6 +70,14 @@ class Mount(backend.Base):
                 if self.path in line:
                     return True
         return False
+
+    def setup(self):
+        pattern = os.path.join(self.path, "*")
+        for path in glob.iglob(pattern):
+            if os.path.isdir(path):
+                shutil.rmtree(path)
+            else:
+                os.remove(path)
 
     # Helpers
 

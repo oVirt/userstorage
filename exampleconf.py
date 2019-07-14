@@ -6,16 +6,20 @@ from userstorage import LoopDevice, Mount, File
 
 GiB = 1024**3
 
+# Base directory for provisioned storage.
+#
 # This is the directory where backing files, symlinks to loop devices, and
 # mount directories are created.
 
 BASE_DIR = "/var/tmp/example-storage"
 
 
-# Dictionary of backends. Here is an example configuration providing file and
-# block storage with 512 and 4k sector size. Note that 4k storage is defined as
-# optional since creating loop device with 4k storgae is not supported on all
-# environments and may be flaky in some supported environments.
+# Dictionary of backends.
+#
+# Here is an example configuration providing all builtin backend types. Note
+# that 4k storage is defined as optional since creating loop device with 4k
+# storgae is not supported on all environments and may be flaky in some
+# supported environments.
 
 BACKENDS = {
 

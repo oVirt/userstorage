@@ -32,7 +32,7 @@ class LoopDevice(backend.Base):
 
     # Backend interface
 
-    def setup(self):
+    def create(self):
         if self.sector_size == 4096 and not self.have_sector_size():
             raise backend.Unsupported(
                 "Sector size {} not supported" .format(self.sector_size))
@@ -51,7 +51,7 @@ class LoopDevice(backend.Base):
         except subprocess.CalledProcessError as e:
             # Creating loop devices using --sector-size is flaky on some setups
             # like oVirt CI, running in under mock.
-            raise backend.SetupFailed(
+            raise backend.CreateFailed(
                 "Error creating loop device: {}".format(e))
 
         # Remove stale symlink.
@@ -63,7 +63,7 @@ class LoopDevice(backend.Base):
         if os.geteuid() != 0:
             osutil.chown(self.path)
 
-    def teardown(self):
+    def delete(self):
         log.info("Removing loop device %s", self.path)
         if self.exists():
             self._remove_loop_device()
@@ -74,6 +74,9 @@ class LoopDevice(backend.Base):
 
     def exists(self):
         return os.path.exists(self.path)
+
+    def setup(self):
+        subprocess.check_call(["blkdiscard", self.path])
 
     # LoopDevice interface.
 

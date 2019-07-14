@@ -15,7 +15,7 @@ The configuration file is a python module, providing these names:
     # Dictionary of backends.
     BACKENDS = {}
 
-See testconf.py example for more info.
+See exampleconf.py example for more info.
 """
 
 import imp

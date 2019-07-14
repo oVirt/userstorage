@@ -31,11 +31,11 @@ soon.
 The userstorage tool creates storage based on configuration file that
 you must provide.
 
-The configuration module is use both by the userstorage tool to
+The configuration module is used both by the userstorage tool to
 provision the storage, and by the tests consuming the storage.
 
-The configuration module typically starts by importing the backends you
-want to provision:
+The configuration module typically starts by importing the required
+backends:
 
     from userstorage import File
 
@@ -51,20 +51,20 @@ See exampleconf.py for example configuration used by the tests for this
 project.
 
 
-## Setting up user storage
+## Creating storage
 
-To setup storage for these tests, run:
+To create the storage described in exampleconf.py, run:
 
-    python -m userstorage setup exampleconf.py
+    python -m userstorage create exampleconf.py
 
-This can be run once when setting up development environment, and must
+This can be run once when creating a development environment, and must
 be run again after rebooting the host.
 
-If you want to tear down the user storage, run:
+If you want to delete the storage, run:
 
-    python -m userstorage teardown exampleconf.py
+    python -m userstorage delete exampleconf.py
 
-There is no need to tear down the storage normally. The loop devices are
+There is no need to delete the storage normally. The loop devices are
 backed up by sparse files and do not consume much resources.
 
 
@@ -76,6 +76,18 @@ set up by userstorage tool, and the exampleconf.py module.
 Note that some storage may not be available on some systems. Your tests
 can check if a storage is available and skip or mark the test as xfail
 if needed.
+
+
+## Ensuring test isolation
+
+Reusing the same storage for all tests introduce the problem of old test
+data breaking other tests, or causing test to pass when they should
+fail.
+
+To avoid this issues, you should call backend's setup() methods before
+using the storage in a test, and teardown() after running the tests.
+This ensures that old data from other tests will not be seen by this
+test.
 
 
 ## How it works?
@@ -101,7 +113,7 @@ defined in the configuration module:
         └── lost+found [error opening dir]
 
 The symbolic links (e.g. file-4k-loop) link to the loop devices created
-by the tool (/dev/loop4), and used to tear down the storage.
+by the tool (/dev/loop4), and used to delete the storage later.
 
 The actual file used for the tests are created inside the mounted
 filesystem (/var/tmp/example-storage/file-4k-mount/file).
