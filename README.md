@@ -135,3 +135,22 @@ If you have an idea for improving this tool, please open an issue to
 discuss the idea.
 
 For trivial changes please send a pull request.
+
+
+## Running the tests
+
+To run the tests you need to install tox. You can use tox from your
+distribution (python2-tox or python3-tox on Fedora), or install it using
+pip.
+
+Before running the tests, create the example storage:
+
+    python -m userstorage create example_config.py
+
+To run the tests:
+
+    tox
+
+If you want to change storage layout, best delete the example storage:
+
+    python -m userstorage delete example_config.py
