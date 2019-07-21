@@ -22,9 +22,9 @@ quickly as yourself directly from your editor.
 
 On Fedora / CentOS you need to install these packages:
 
-    yum install e2fsprogs sudo util-linux
+    yum install e2fsprogs sudo util-linux xfsprogs
 
-The packages are typically installed on your machine, but you may need
+Some packages are typically installed on your machine, but you may need
 to add them to CI environment or container.
 
 

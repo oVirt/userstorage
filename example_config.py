@@ -44,7 +44,8 @@ BACKENDS = {
             name="mount-512",
             size=GiB,
             sector_size=512,
-        )
+        ),
+        fstype="ext4",
     ),
 
     "mount-4k": Mount(
@@ -54,7 +55,8 @@ BACKENDS = {
             size=GiB,
             sector_size=4096,
             required=False,
-        )
+        ),
+        fstype="xfs",
     ),
 
     "file-512": File(
