@@ -104,16 +104,14 @@ def detect_block_size(path):
     """
     Detect the minimal block size for direct I/O. This is typically the sector
     size of the underlying storage.
-
-    Copied from ovirt-imageio.
     """
-    fd = os.open(path, os.O_RDONLY | os.O_DIRECT)
-    with io.FileIO(fd, "r") as f:
+    fd = os.open(path, os.O_RDWR | os.O_DIRECT)
+    with io.FileIO(fd, "r+") as f:
         for block_size in (512, 4096):
             buf = mmap.mmap(-1, block_size)
             with closing(buf):
                 try:
-                    f.readinto(buf)
+                    f.write(buf)
                 except EnvironmentError as e:
                     if e.errno != errno.EINVAL:
                         raise
