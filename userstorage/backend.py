@@ -72,7 +72,7 @@ class Base(object):
         Should be called before each test to ensure old data from previous
         tests does not break this test.
 
-        Should be called in your pytest fixture before yielding the backed to
+        Should be called in your pytest fixture before yielding the backend to
         the tests. If you use unittest based tests, should be called in
         setUp().
 
