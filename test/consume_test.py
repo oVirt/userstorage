@@ -30,10 +30,9 @@ log = logging.getLogger(__name__)
     ids=str,
 )
 def user_loop(request):
-    backend = validate_backend(request.param)
-    backend.setup()
-    yield backend
-    backend.teardown()
+    storage = validate_backend(request.param)
+    with storage as backend:
+        yield backend
 
 
 @pytest.fixture(
@@ -48,10 +47,9 @@ def user_loop(request):
     ids=str,
 )
 def user_mount(request):
-    backend = validate_backend(request.param)
-    backend.setup()
-    yield backend
-    backend.teardown()
+    storage = validate_backend(request.param)
+    with storage as backend:
+        yield backend
 
 
 @pytest.fixture(
@@ -62,10 +60,9 @@ def user_mount(request):
     ids=str,
 )
 def user_file(request):
-    backend = validate_backend(request.param)
-    backend.setup()
-    yield backend
-    backend.teardown()
+    storage = validate_backend(request.param)
+    with storage as backend:
+        yield backend
 
 
 def validate_backend(backend):
