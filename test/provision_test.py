@@ -9,6 +9,7 @@ import subprocess
 import sys
 
 import pytest
+from _pytest.outcomes import XFailed
 
 import userstorage
 
@@ -74,3 +75,12 @@ def test_delete_twice(cleanup):
 
     for b in BACKENDS.values():
         assert not b.exists()
+
+
+@pytest.mark.sudo
+def test_storage_not_available(cleanup):
+    for storage in BACKENDS.values():
+        # Setup a storage without create is xfailed
+        with pytest.raises(XFailed):
+            with storage:
+                pass

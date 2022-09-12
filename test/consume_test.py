@@ -31,8 +31,7 @@ log = logging.getLogger(__name__)
     ids=str,
 )
 def user_loop(request):
-    storage = validate_backend(request.param)
-    with storage as backend:
+    with request.param as backend:
         yield backend
 
 
@@ -48,8 +47,7 @@ def user_loop(request):
     ids=str,
 )
 def user_mount(request):
-    storage = validate_backend(request.param)
-    with storage as backend:
+    with request.param as backend:
         yield backend
 
 
@@ -61,15 +59,8 @@ def user_mount(request):
     ids=str,
 )
 def user_file(request):
-    storage = validate_backend(request.param)
-    with storage as backend:
+    with request.param as backend:
         yield backend
-
-
-def validate_backend(backend):
-    if not backend.exists():
-        pytest.xfail("backend {} not available".format(backend))
-    return backend
 
 
 def test_loop_device(user_loop):
