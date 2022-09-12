@@ -27,7 +27,7 @@ class CreateFailed(Error):
 
 class Base(object):
     """
-    Base class for backend objects.
+    Base class for backend objects. Can be used as a context manager.
     """
 
     # Name used by the tests to locate this backend. Storage backends must be
@@ -89,6 +89,19 @@ class Base(object):
 
         Subclass should implemnet if needed.
         """
+
+    def __enter__(self):
+        """
+        Setup the current storage and return it.
+        """
+        self.setup()
+        return self
+
+    def __exit__(self, *args):
+        """
+        Cleanup current storage on context exit.
+        """
+        self.teardown()
 
     # Displaying.
 
