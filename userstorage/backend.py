@@ -76,7 +76,7 @@ class Base(object):
         the tests. If you use unittest based tests, should be called in
         setUp().
 
-        Subclass should implemnet if needed.
+        Subclass should override if needed.
         """
 
     def teardown(self):
@@ -87,7 +87,7 @@ class Base(object):
         to the tests. If you use unittest based tests, should be called in
         tearDown().
 
-        Subclass should implemnet if needed.
+        Subclass should override if needed.
         """
 
     def __enter__(self):
