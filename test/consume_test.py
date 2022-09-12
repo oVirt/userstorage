@@ -11,6 +11,7 @@ import os
 import stat
 import logging
 
+from pathlib import Path
 from contextlib import closing
 
 import pytest
@@ -87,6 +88,15 @@ def test_mount(user_mount):
         log.warning("block size detection broken since kernel 5.5")
     else:
         assert detect_block_size(filename) == user_mount.sector_size
+
+
+def test_mount_tmpdir(user_mount):
+    with user_mount.tmpdir() as tmpdir:
+        assert os.path.isdir(tmpdir)
+        # Check that tmpdir is relative to the mount path
+        assert Path(user_mount.path) in Path(tmpdir).parents
+
+    assert not os.path.exists(tmpdir)
 
 
 def test_file(user_file):

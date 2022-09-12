@@ -9,6 +9,7 @@ import logging
 import os
 import shutil
 import subprocess
+import tempfile
 
 from . import backend
 from . import osutil
@@ -79,6 +80,13 @@ class Mount(backend.Base):
                 shutil.rmtree(path)
             else:
                 os.remove(path)
+
+    def tmpdir(self):
+        """
+        Create and return a TemporaryDirectory in the current
+        mounted filesystem. Can be used as a context manager.
+        """
+        return tempfile.TemporaryDirectory(dir=self.path)
 
     # Helpers
 
