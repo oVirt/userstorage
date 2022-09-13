@@ -46,6 +46,8 @@ def user_loop(request):
 )
 def user_mount(request):
     backend = validate_backend(request.param)
+    if backend.fstype == "ext2":
+        pytest.xfail("block size detection broken since kernel 5.5")
     backend.setup()
     yield backend
     backend.teardown()
