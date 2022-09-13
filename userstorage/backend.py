@@ -32,7 +32,7 @@ class Base(object):
 
     # Name used by the tests to locate this backend. Storage backends must be
     # configured with a unique name.
-    name = None
+    name = ""
 
     # Storage logical block size.
     sector_size = 512
