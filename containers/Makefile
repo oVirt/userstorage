@@ -1,5 +1,5 @@
 # Copyright (C) 2022 Albert Esteve
-# This program is free software; see LICENSE for more info.
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 targets := centos-8
 prefix := userstorage-test

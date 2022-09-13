@@ -1,5 +1,5 @@
 # Copyright (C) 2019 Nir Soffer
-# This program is free software; see LICENSE for more info.
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 import errno
 import grp
