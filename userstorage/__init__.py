@@ -10,3 +10,10 @@ from userstorage.file import File
 
 # Helpers.
 from userstorage.config import load_config
+
+# Errors.
+from userstorage.errors import (
+    Error,
+    Unsupported,
+    CreateFailed,
+)
