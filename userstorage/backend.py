@@ -4,8 +4,6 @@
 from __future__ import absolute_import
 from __future__ import division
 
-import pytest
-
 
 class Base(object):
     """
@@ -77,7 +75,8 @@ class Base(object):
         Setup the current storage and return it.
         """
         if not self.exists():
-            pytest.xfail(f"backend {self} not available")
+            from . import missing_handler
+            missing_handler(f"backend {self} not available")
         self.setup()
         return self
 

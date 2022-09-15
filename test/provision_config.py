@@ -5,7 +5,13 @@
 Configuration for provisioning test.
 """
 
+import userstorage
 from userstorage import LoopDevice, Mount, File
+
+import pytest
+
+
+userstorage.missing_handler = pytest.xfail
 
 # mkfs.xfs requires at leat 4096 blocks (16 MiB). Lets double that value to
 # keep a way from the limits.

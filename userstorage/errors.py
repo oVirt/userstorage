@@ -20,3 +20,9 @@ class CreateFailed(Error):
     May be raised in create() if backend is supported but creating backend has
     failed.
     """
+
+
+class Missing(Error):
+    """
+    May be raised in __enter__() if backend is not created before setup().
+    """

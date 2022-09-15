@@ -16,4 +16,15 @@ from userstorage.errors import (
     Error,
     Unsupported,
     CreateFailed,
+    Missing,
 )
+
+
+def missing_handler(msg):
+    """
+    Should be called when entering the context without having created
+    the associated storage.
+
+    Clients can override if needed.
+    """
+    raise Missing(msg)

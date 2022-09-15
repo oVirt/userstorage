@@ -5,7 +5,14 @@
 Example userstorage configuration module.
 """
 
+import userstorage
 from userstorage import LoopDevice, Mount, File
+
+import pytest
+
+
+# Mark tests as xfail when the storage they need is missing.
+userstorage.missing_handler = pytest.xfail
 
 GiB = 1024**3
 
