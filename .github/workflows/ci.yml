@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run linters
-      run: tox -e flake8,pylint
+      run: tox -e reuse,flake8,pylint
   test:
     runs-on: ubuntu-latest
     strategy:
