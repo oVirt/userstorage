@@ -13,6 +13,7 @@ RUN dnf update -y \
         xfsprogs \
         python3-devel \
         python3-pip \
+        git \
     && dnf clean all
 
 # Developemnt tools.
