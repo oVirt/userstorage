@@ -7,26 +7,6 @@ from __future__ import division
 import pytest
 
 
-class Error(Exception):
-    """
-    Base class for backend errors.
-    """
-
-
-class Unsupported(Error):
-    """
-    May be raised in create() if backend is not supported on the current
-    system.
-    """
-
-
-class CreateFailed(Error):
-    """
-    May be raised in create() if backend is supported but creating backend has
-    failed.
-    """
-
-
 class Base(object):
     """
     Base class for backend objects. Can be used as a context manager.

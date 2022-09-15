@@ -9,6 +9,7 @@ import os
 import subprocess
 
 from . import backend
+from . import errors
 from . import osutil
 
 log = logging.getLogger("userstorage")
@@ -37,7 +38,7 @@ class LoopDevice(backend.Base):
 
     def create(self):
         if self.sector_size == 4096 and not self.have_sector_size():
-            raise backend.Unsupported(
+            raise errors.Unsupported(
                 "Sector size {} not supported" .format(self.sector_size))
 
         if self.exists():
@@ -54,7 +55,7 @@ class LoopDevice(backend.Base):
         except subprocess.CalledProcessError as e:
             # Creating loop devices using --sector-size is flaky on some setups
             # like oVirt CI, running in under mock.
-            raise backend.CreateFailed(
+            raise errors.CreateFailed(
                 "Error creating loop device: {}".format(e))
 
         if os.geteuid() != 0:

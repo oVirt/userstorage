@@ -7,7 +7,7 @@ from __future__ import division
 import argparse
 import logging
 
-from . import backend
+from . import errors
 from . import config
 from . import osutil
 
@@ -50,7 +50,7 @@ def create(cfg):
     for b in cfg.BACKENDS.values():
         try:
             b.create()
-        except backend.Error as e:
+        except errors.Error as e:
             if b.required:
                 raise
             log.warning("Skipping %s storage: %s", b.name, e)

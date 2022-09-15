@@ -12,6 +12,7 @@ import subprocess
 import tempfile
 
 from . import backend
+from . import errors
 from . import osutil
 
 log = logging.getLogger("userstorage")
@@ -97,7 +98,7 @@ class Mount(backend.Base):
             subprocess.check_call(
                 ["sudo", "mkfs", "-t", self.fstype, "-q", self._loop.path])
         except subprocess.CalledProcessError as e:
-            raise backend.CreateFailed(
+            raise errors.CreateFailed(
                 "Error creating filesystem: {}".format(e))
 
         self._wait_for_udev_events(10)
@@ -112,7 +113,7 @@ class Mount(backend.Base):
                 self.path
             ])
         except subprocess.CalledProcessError as e:
-            raise backend.CreateFailed(
+            raise errors.CreateFailed(
                 "Error mounting loop device: {}".format(e))
 
     def _unmount_loop(self):
