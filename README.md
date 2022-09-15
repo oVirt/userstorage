@@ -94,9 +94,12 @@ backed up by sparse files and do not consume much resources.
 See test/consume_test.py for example test module consuming storage
 set up by userstorage tool, and the example_config.py module.
 
-Note that some storage may not be available on some systems. Your tests
-can check if a storage is available and skip or mark the test as xfail
-if needed.
+Note that some storage may not be available on some systems. If a storage is
+not available, it will raise `userstorage.Missing`.
+The behaviour for missing storage can be overriden from your tests
+(e.g., to mark the test as xfail if needed) by doing:
+
+    userstorage.missing_handler = pytest.xfail
 
 
 ## Ensuring test isolation
