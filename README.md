@@ -44,8 +44,6 @@ Use pip:
 
     python3 -m pip install --user userstorage
 
-Use python2 if you need to run on a distribution without python3.
-
 
 ## Creating configuration file
 
