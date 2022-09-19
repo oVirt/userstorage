@@ -165,7 +165,7 @@ For trivial changes please send a pull request.
 ## Running the tests
 
 To run the tests you need to install tox. You can use tox from your
-distribution (python2-tox or python3-tox on Fedora), or install it using
+distribution (e.g., python3-tox on Fedora), or install it using
 pip.
 
 Before running the tests, create the example storage:
