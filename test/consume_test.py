@@ -28,8 +28,8 @@ log = logging.getLogger(__name__)
     ids=str,
 )
 def user_loop(request):
-    with request.param as backend:
-        yield backend
+    with request.param:
+        yield request.param
 
 
 @pytest.fixture(
@@ -44,8 +44,8 @@ def user_loop(request):
     ids=str,
 )
 def user_mount(request):
-    with request.param as backend:
-        yield backend
+    with request.param:
+        yield request.param
 
 
 @pytest.fixture(
@@ -56,8 +56,8 @@ def user_mount(request):
     ids=str,
 )
 def user_file(request):
-    with request.param as backend:
-        yield backend
+    with request.param:
+        yield request.param
 
 
 def test_loop_device(user_loop):
