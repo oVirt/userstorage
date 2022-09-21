@@ -74,7 +74,7 @@ class Base(object):
         """
         if not self.exists():
             from . import missing_handler
-            missing_handler(f"backend {self} not available")
+            missing_handler(f"backend {self} does not exist")
         self.setup()
         return self
 
