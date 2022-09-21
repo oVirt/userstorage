@@ -69,7 +69,8 @@ class Base(object):
 
     def __enter__(self):
         """
-        Setup the current storage and return it.
+        Setup the current storage and return it. Invokes
+        userstorage.missing_handler() if storage does not exist.
         """
         if not self.exists():
             from . import missing_handler
