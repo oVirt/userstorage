@@ -144,7 +144,7 @@ filesystem (/var/tmp/example-storage/file-4k-mount/file).
 ## Projects using userstorage
 
 - [ovirt-imageio](https://github.com/oVirt/ovirt-imageio)
-- [vdsm](https://github.com/oVirt/vdsm) - embers a more recent version
+- [vdsm](https://github.com/oVirt/vdsm)
 - [sanlock](https://pagure.io/sanlock) - embeds a very early version
 
 (Please add your project here)
