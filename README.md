@@ -150,16 +150,6 @@ filesystem (/var/tmp/example-storage/file-4k-mount/file).
 (Please add your project here)
 
 
-## Contributing
-
-If you found a bug, please open an issue.
-
-If you have an idea for improving this tool, please open an issue to
-discuss the idea.
-
-For trivial changes please send a pull request.
-
-
 ## Running the tests
 
 To run the tests you need to install tox. You can use tox from your
