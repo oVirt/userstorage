@@ -5,11 +5,11 @@ SPDX-License-Identifier: GPL-2.0-or-later
 
 # userstorage
 
-[![](https://img.shields.io/pypi/v/userstorage)](https://pypi.org/project/userstorage/)
-[![](https://img.shields.io/pypi/pyversions/userstorage)](https://pypi.org/project/userstorage/)
-[![](https://img.shields.io/pypi/dm/userstorage)](https://pypi.org/project/userstorage/)
-[![](https://github.com/nirs/userstorage/actions/workflows/ci.yml/badge.svg)](https://github.com/nirs/userstorage/actions/workflows/ci.yml)
-[![](https://img.shields.io/github/license/nirs/userstorage)](https://pypi.org/project/userstorage/)
+[![Package version](https://img.shields.io/pypi/v/userstorage)](https://pypi.org/project/userstorage/)
+[![Python versions](https://img.shields.io/pypi/pyversions/userstorage)](https://pypi.org/project/userstorage/)
+[![Downloads per month](https://img.shields.io/pypi/dm/userstorage)](https://pypi.org/project/userstorage/)
+[![CI status](https://github.com/nirs/userstorage/actions/workflows/ci.yml/badge.svg)](https://github.com/nirs/userstorage/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/nirs/userstorage)](https://pypi.org/project/userstorage/)
 
 Helper for setting up storage for tests.
 
