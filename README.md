@@ -183,3 +183,5 @@ To run the tests:
 If you want to change storage layout, best delete the example storage:
 
     python3 -m userstorage delete example_config.py
+
+Testing DCO requirement...
