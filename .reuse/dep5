@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: userstorage
 Upstream-Contact: Nir Soffer <nirsof@gmail.com>
-Source: https://github.com/nirs/userstorage
+Source: https://github.com/oVirt/userstorage
 
 # Sample paragraph, commented out:
 #

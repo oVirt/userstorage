@@ -8,8 +8,8 @@ SPDX-License-Identifier: GPL-2.0-or-later
 [![Package version](https://img.shields.io/pypi/v/userstorage)](https://pypi.org/project/userstorage/)
 [![Python versions](https://img.shields.io/pypi/pyversions/userstorage)](https://pypi.org/project/userstorage/)
 [![Downloads per month](https://img.shields.io/pypi/dm/userstorage)](https://pypi.org/project/userstorage/)
-[![CI status](https://github.com/nirs/userstorage/actions/workflows/ci.yml/badge.svg)](https://github.com/nirs/userstorage/actions/workflows/ci.yml)
-[![License](https://img.shields.io/github/license/nirs/userstorage)](https://pypi.org/project/userstorage/)
+[![CI status](https://github.com/oVirt/userstorage/actions/workflows/ci.yml/badge.svg)](https://github.com/oVirt/userstorage/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/oVirt/userstorage)](https://pypi.org/project/userstorage/)
 
 Helper for setting up storage for tests.
 
@@ -72,7 +72,7 @@ The configuration module must define these names:
     # Storage configurations needed by the tests.
     BACKENDS = {}
 
-See [example_config.py](https://raw.githubusercontent.com/nirs/userstorage/master/example_config.py)
+See [example_config.py](https://raw.githubusercontent.com/oVirt/userstorage/master/example_config.py)
 for example configuration used by the tests for this project.
 
 

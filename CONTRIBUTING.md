@@ -56,7 +56,7 @@ pull request without an associated Issue.
 
 Do not forget to add upstream as one of your remotes to keep your
 local fork updated:
-    git remote add git@github.com:nirs/userstorage.git
+    git remote add git@github.com:oVirt/userstorage.git
 
 ### Pull Requests
 

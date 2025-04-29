@@ -16,7 +16,7 @@ setuptools.setup(
     description="Create storage for tests",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/nirs/userstorage",
+    url="https://github.com/oVirt/userstorage",
     packages=["userstorage"],
     classifiers=[
         "Development Status :: 4 - Beta",
