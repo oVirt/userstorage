@@ -10,20 +10,22 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    container: quay.io/alesgar/userstorage-test-centos-8
+    container: quay.io/ovirt/userstorage-test-centos-9
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Run linters
       run: tox -e reuse,flake8,pylint
   test:
     runs-on: ubuntu-latest
     strategy:
+      matrix:
+        distro: [ centos-9 ]
       fail-fast: false
     container:
-      image: quay.io/alesgar/userstorage-test-centos-8
+      image: quay.io/alesgar/userstorage-test-centos-9
       # Required to create loop devices.
       options: --privileged
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Run tests
       run: ci/test.sh

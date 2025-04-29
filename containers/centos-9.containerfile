@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Nir Soffer <nirsof@gmail.com>
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-FROM quay.io/centos/centos:stream8
+FROM quay.io/centos/centos:stream9
 
 # Runtime packages.
 RUN dnf update -y \
