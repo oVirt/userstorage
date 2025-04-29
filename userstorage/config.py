@@ -18,7 +18,7 @@ The configuration file is a python module, providing these names:
 See exampleconf.py example for more info.
 """
 
-import imp
+import importlib
 import os
 
 
@@ -27,10 +27,8 @@ def load_config(filename):
     Load user configuration module.
     """
     basepath = os.path.splitext(filename)[0]
-    module_dir, module_name = os.path.split(basepath)
-    fp, pathname, description = imp.find_module(module_name, [module_dir])
-    try:
-        return imp.load_module(module_name, fp, pathname, description)
-    finally:
-        if fp:
-            fp.close()
+    _, module_name = os.path.split(basepath)
+    spec = importlib.util.spec_from_file_location(module_name, filename)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
