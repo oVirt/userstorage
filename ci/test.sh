@@ -29,4 +29,4 @@ python3 -m userstorage create example_config.py
 # Teardown storage before exit.
 trap teardown_storage EXIT
 # Run tests (skip provision tests in the CI, since loop device creating is flaky)
-tox -e py36 -- -m "not sudo"
+tox -e py39 -- -m "not sudo"
