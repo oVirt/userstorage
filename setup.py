@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: Nir Soffer <nirsof@gmail.com>
+# SPDX-FileCopyrightText: oVirt Developers <devel@ovirt.org>
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 # flake8: noqa
@@ -11,8 +11,8 @@ with open("README.md", "r") as f:
 setuptools.setup(
     name="userstorage",
     version="0.6.0",
-    author="Nir Soffer",
-    author_email="nirsof@gmail.com",
+    author="oVirt Developers",
+    author_email="devel@ovirt.org",
     description="Create storage for tests",
     long_description=long_description,
     long_description_content_type="text/markdown",

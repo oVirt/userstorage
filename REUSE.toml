@@ -1,0 +1,5 @@
+version = 1
+SPDX-PackageName = "userstorage"
+SPDX-PackageSupplier = "oVirt Developers <devel@ovirt.org>"
+SPDX-PackageDownloadLocation = "https://github.com/oVirt/userstorage"
+annotations = []
