@@ -14,7 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Run linters
-      run: tox -e reuse,flake8,pylint
+      run: |
+        git config --global --add safe.directory "$PWD"
+        tox -e reuse,flake8,pylint
   test:
     runs-on: ubuntu-latest
     strategy:
