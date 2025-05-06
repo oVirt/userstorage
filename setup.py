@@ -10,7 +10,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="userstorage",
-    version="0.6.0",
+    version="0.5.2",
     author="oVirt Developers",
     author_email="devel@ovirt.org",
     description="Create storage for tests",
