@@ -10,7 +10,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="userstorage",
-    version="0.6.0",
+    version="0.5.3",
     author="oVirt Developers",
     author_email="devel@ovirt.org",
     license="GPL-2.0-or-later",
