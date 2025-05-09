@@ -18,7 +18,7 @@ The configuration file is a python module, providing these names:
 See exampleconf.py example for more info.
 """
 
-import importlib
+import importlib.util
 import os
 
 
