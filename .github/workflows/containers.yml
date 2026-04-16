@@ -19,7 +19,7 @@ jobs:
       matrix:
         distro: [ centos-9, centos-10, almalinux-9, almalinux-10 ]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install dependencies
         run: |
           sudo apt update
@@ -30,7 +30,7 @@ jobs:
       - name: Push to Quay.io
         if: ${{ env.can_push == 'true' }}
         id: push-to-quay
-        uses: redhat-actions/push-to-registry@v2
+        uses: redhat-actions/push-to-registry@main
         with:
           image: userstorage-test
           tags: ${{ matrix.distro }}
