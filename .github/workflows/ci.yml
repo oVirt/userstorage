@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     container: quay.io/ovirt/userstorage-test:centos-9
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Run linters
       run: |
         git config --global --add safe.directory "$PWD"
@@ -28,7 +28,7 @@ jobs:
       # Required to create loop devices.
       options: --privileged
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     # We need to run this in order to fix sudo execution.
     # See https://github.com/rocky-linux/sig-cloud-instance-images/issues/56
     - name: Fix sudo
